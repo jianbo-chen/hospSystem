@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cjb.dao.ReservationMapper">
+  <resultMap id="BaseResultMap" type="com.cjb.pojo.Reservation">
+    <id column="reservation_id" jdbcType="INTEGER" property="reservationId" />
+    <result column="reservation_order_id" jdbcType="INTEGER" property="reservationOrderId" />
+    <result column="reservation_name" jdbcType="VARCHAR" property="reservationName" />
+    <result column="reservation_sex" jdbcType="VARCHAR" property="reservationSex" />
+    <result column="reservation_idnum" jdbcType="VARCHAR" property="reservationIdnum" />
+    <result column="reservation_phone" jdbcType="INTEGER" property="reservationPhone" />
+    <result column="reservation_dept" jdbcType="VARCHAR" property="reservationDept" />
+    <result column="reservation_doctor" jdbcType="VARCHAR" property="reservationDoctor" />
+    <result column="reservation_date" jdbcType="DATE" property="reservationDate" />
+    <result column="reservation_period" jdbcType="VARCHAR" property="reservationPeriod" />
+    <result column="reservation_starttime" jdbcType="TIME" property="reservationStarttime" />
+    <result column="reservation_endtime" jdbcType="TIME" property="reservationEndtime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    reservation_id, reservation_order_id, reservation_name, reservation_sex, reservation_idnum, 
+    reservation_phone, reservation_dept, reservation_doctor, reservation_date, reservation_period, 
+    reservation_starttime, reservation_endtime
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from reservation
+    where reservation_id = #{reservationId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from reservation
+    where reservation_id = #{reservationId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.cjb.pojo.Reservation">
+    insert into reservation (reservation_id, reservation_order_id, 
+      reservation_name, reservation_sex, reservation_idnum, 
+      reservation_phone, reservation_dept, reservation_doctor, 
+      reservation_date, reservation_period, reservation_starttime, 
+      reservation_endtime)
+    values (#{reservationId,jdbcType=INTEGER}, #{reservationOrderId,jdbcType=INTEGER}, 
+      #{reservationName,jdbcType=VARCHAR}, #{reservationSex,jdbcType=VARCHAR}, #{reservationIdnum,jdbcType=VARCHAR}, 
+      #{reservationPhone,jdbcType=INTEGER}, #{reservationDept,jdbcType=VARCHAR}, #{reservationDoctor,jdbcType=VARCHAR}, 
+      #{reservationDate,jdbcType=DATE}, #{reservationPeriod,jdbcType=VARCHAR}, #{reservationStarttime,jdbcType=TIME}, 
+      #{reservationEndtime,jdbcType=TIME})
+  </insert>
+  <insert id="insertSelective" parameterType="com.cjb.pojo.Reservation">
+    insert into reservation
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="reservationId != null">
+        reservation_id,
+      </if>
+      <if test="reservationOrderId != null">
+        reservation_order_id,
+      </if>
+      <if test="reservationName != null">
+        reservation_name,
+      </if>
+      <if test="reservationSex != null">
+        reservation_sex,
+      </if>
+      <if test="reservationIdnum != null">
+        reservation_idnum,
+      </if>
+      <if test="reservationPhone != null">
+        reservation_phone,
+      </if>
+      <if test="reservationDept != null">
+        reservation_dept,
+      </if>
+      <if test="reservationDoctor != null">
+        reservation_doctor,
+      </if>
+      <if test="reservationDate != null">
+        reservation_date,
+      </if>
+      <if test="reservationPeriod != null">
+        reservation_period,
+      </if>
+      <if test="reservationStarttime != null">
+        reservation_starttime,
+      </if>
+      <if test="reservationEndtime != null">
+        reservation_endtime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="reservationId != null">
+        #{reservationId,jdbcType=INTEGER},
+      </if>
+      <if test="reservationOrderId != null">
+        #{reservationOrderId,jdbcType=INTEGER},
+      </if>
+      <if test="reservationName != null">
+        #{reservationName,jdbcType=VARCHAR},
+      </if>
+      <if test="reservationSex != null">
+        #{reservationSex,jdbcType=VARCHAR},
+      </if>
+      <if test="reservationIdnum != null">
+        #{reservationIdnum,jdbcType=VARCHAR},
+      </if>
+      <if test="reservationPhone != null">
+        #{reservationPhone,jdbcType=INTEGER},
+      </if>
+      <if test="reservationDept != null">
+        #{reservationDept,jdbcType=VARCHAR},
+      </if>
+      <if test="reservationDoctor != null">
+        #{reservationDoctor,jdbcType=VARCHAR},
+      </if>
+      <if test="reservationDate != null">
+        #{reservationDate,jdbcType=DATE},
+      </if>
+      <if test="reservationPeriod != null">
+        #{reservationPeriod,jdbcType=VARCHAR},
+      </if>
+      <if test="reservationStarttime != null">
+        #{reservationStarttime,jdbcType=TIME},
+      </if>
+      <if test="reservationEndtime != null">
+        #{reservationEndtime,jdbcType=TIME},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.cjb.pojo.Reservation">
+    update reservation
+    <set>
+      <if test="reservationOrderId != null">
+        reservation_order_id = #{reservationOrderId,jdbcType=INTEGER},
+      </if>
+      <if test="reservationName != null">
+        reservation_name = #{reservationName,jdbcType=VARCHAR},
+      </if>
+      <if test="reservationSex != null">
+        reservation_sex = #{reservationSex,jdbcType=VARCHAR},
+      </if>
+      <if test="reservationIdnum != null">
+        reservation_idnum = #{reservationIdnum,jdbcType=VARCHAR},
+      </if>
+      <if test="reservationPhone != null">
+        reservation_phone = #{reservationPhone,jdbcType=INTEGER},
+      </if>
+      <if test="reservationDept != null">
+        reservation_dept = #{reservationDept,jdbcType=VARCHAR},
+      </if>
+      <if test="reservationDoctor != null">
+        reservation_doctor = #{reservationDoctor,jdbcType=VARCHAR},
+      </if>
+      <if test="reservationDate != null">
+        reservation_date = #{reservationDate,jdbcType=DATE},
+      </if>
+      <if test="reservationPeriod != null">
+        reservation_period = #{reservationPeriod,jdbcType=VARCHAR},
+      </if>
+      <if test="reservationStarttime != null">
+        reservation_starttime = #{reservationStarttime,jdbcType=TIME},
+      </if>
+      <if test="reservationEndtime != null">
+        reservation_endtime = #{reservationEndtime,jdbcType=TIME},
+      </if>
+    </set>
+    where reservation_id = #{reservationId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.cjb.pojo.Reservation">
+    update reservation
+    set reservation_order_id = #{reservationOrderId,jdbcType=INTEGER},
+      reservation_name = #{reservationName,jdbcType=VARCHAR},
+      reservation_sex = #{reservationSex,jdbcType=VARCHAR},
+      reservation_idnum = #{reservationIdnum,jdbcType=VARCHAR},
+      reservation_phone = #{reservationPhone,jdbcType=INTEGER},
+      reservation_dept = #{reservationDept,jdbcType=VARCHAR},
+      reservation_doctor = #{reservationDoctor,jdbcType=VARCHAR},
+      reservation_date = #{reservationDate,jdbcType=DATE},
+      reservation_period = #{reservationPeriod,jdbcType=VARCHAR},
+      reservation_starttime = #{reservationStarttime,jdbcType=TIME},
+      reservation_endtime = #{reservationEndtime,jdbcType=TIME}
+    where reservation_id = #{reservationId,jdbcType=INTEGER}
+  </update>
+</mapper>

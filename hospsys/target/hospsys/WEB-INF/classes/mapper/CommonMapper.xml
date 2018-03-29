@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cjb.dao.CommonMapper">
+  <resultMap id="BaseResultMap" type="com.cjb.pojo.Common">
+    <id column="common_id" jdbcType="INTEGER" property="commonId" />
+    <result column="common_order_id" jdbcType="INTEGER" property="commonOrderId" />
+    <result column="common_patien_uid" jdbcType="INTEGER" property="commonPatienUid" />
+    <result column="common_doctor_uid" jdbcType="INTEGER" property="commonDoctorUid" />
+    <result column="common_time" jdbcType="TIMESTAMP" property="commonTime" />
+    <result column="common_content" jdbcType="VARCHAR" property="commonContent" />
+    <result column="common_dr_attitude" jdbcType="CHAR" property="commonDrAttitude" />
+    <result column="common_efficacy" jdbcType="CHAR" property="commonEfficacy" />
+    <result column="common_diseasetype" jdbcType="VARCHAR" property="commonDiseasetype" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    common_id, common_order_id, common_patien_uid, common_doctor_uid, common_time, common_content, 
+    common_dr_attitude, common_efficacy, common_diseasetype
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from common
+    where common_id = #{commonId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from common
+    where common_id = #{commonId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.cjb.pojo.Common">
+    insert into common (common_id, common_order_id, common_patien_uid, 
+      common_doctor_uid, common_time, common_content, 
+      common_dr_attitude, common_efficacy, common_diseasetype
+      )
+    values (#{commonId,jdbcType=INTEGER}, #{commonOrderId,jdbcType=INTEGER}, #{commonPatienUid,jdbcType=INTEGER}, 
+      #{commonDoctorUid,jdbcType=INTEGER}, #{commonTime,jdbcType=TIMESTAMP}, #{commonContent,jdbcType=VARCHAR}, 
+      #{commonDrAttitude,jdbcType=CHAR}, #{commonEfficacy,jdbcType=CHAR}, #{commonDiseasetype,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.cjb.pojo.Common">
+    insert into common
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="commonId != null">
+        common_id,
+      </if>
+      <if test="commonOrderId != null">
+        common_order_id,
+      </if>
+      <if test="commonPatienUid != null">
+        common_patien_uid,
+      </if>
+      <if test="commonDoctorUid != null">
+        common_doctor_uid,
+      </if>
+      <if test="commonTime != null">
+        common_time,
+      </if>
+      <if test="commonContent != null">
+        common_content,
+      </if>
+      <if test="commonDrAttitude != null">
+        common_dr_attitude,
+      </if>
+      <if test="commonEfficacy != null">
+        common_efficacy,
+      </if>
+      <if test="commonDiseasetype != null">
+        common_diseasetype,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="commonId != null">
+        #{commonId,jdbcType=INTEGER},
+      </if>
+      <if test="commonOrderId != null">
+        #{commonOrderId,jdbcType=INTEGER},
+      </if>
+      <if test="commonPatienUid != null">
+        #{commonPatienUid,jdbcType=INTEGER},
+      </if>
+      <if test="commonDoctorUid != null">
+        #{commonDoctorUid,jdbcType=INTEGER},
+      </if>
+      <if test="commonTime != null">
+        #{commonTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="commonContent != null">
+        #{commonContent,jdbcType=VARCHAR},
+      </if>
+      <if test="commonDrAttitude != null">
+        #{commonDrAttitude,jdbcType=CHAR},
+      </if>
+      <if test="commonEfficacy != null">
+        #{commonEfficacy,jdbcType=CHAR},
+      </if>
+      <if test="commonDiseasetype != null">
+        #{commonDiseasetype,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.cjb.pojo.Common">
+    update common
+    <set>
+      <if test="commonOrderId != null">
+        common_order_id = #{commonOrderId,jdbcType=INTEGER},
+      </if>
+      <if test="commonPatienUid != null">
+        common_patien_uid = #{commonPatienUid,jdbcType=INTEGER},
+      </if>
+      <if test="commonDoctorUid != null">
+        common_doctor_uid = #{commonDoctorUid,jdbcType=INTEGER},
+      </if>
+      <if test="commonTime != null">
+        common_time = #{commonTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="commonContent != null">
+        common_content = #{commonContent,jdbcType=VARCHAR},
+      </if>
+      <if test="commonDrAttitude != null">
+        common_dr_attitude = #{commonDrAttitude,jdbcType=CHAR},
+      </if>
+      <if test="commonEfficacy != null">
+        common_efficacy = #{commonEfficacy,jdbcType=CHAR},
+      </if>
+      <if test="commonDiseasetype != null">
+        common_diseasetype = #{commonDiseasetype,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where common_id = #{commonId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.cjb.pojo.Common">
+    update common
+    set common_order_id = #{commonOrderId,jdbcType=INTEGER},
+      common_patien_uid = #{commonPatienUid,jdbcType=INTEGER},
+      common_doctor_uid = #{commonDoctorUid,jdbcType=INTEGER},
+      common_time = #{commonTime,jdbcType=TIMESTAMP},
+      common_content = #{commonContent,jdbcType=VARCHAR},
+      common_dr_attitude = #{commonDrAttitude,jdbcType=CHAR},
+      common_efficacy = #{commonEfficacy,jdbcType=CHAR},
+      common_diseasetype = #{commonDiseasetype,jdbcType=VARCHAR}
+    where common_id = #{commonId,jdbcType=INTEGER}
+  </update>
+</mapper>

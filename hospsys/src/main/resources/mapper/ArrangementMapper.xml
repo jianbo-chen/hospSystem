@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cjb.dao.ArrangementMapper">
+  <resultMap id="BaseResultMap" type="com.cjb.pojo.Arrangement">
+    <id column="arrgt_id" jdbcType="INTEGER" property="arrgtId" />
+    <result column="arrgt_doctor_id" jdbcType="INTEGER" property="arrgtDoctorId" />
+    <result column="arrgt_date" jdbcType="DATE" property="arrgtDate" />
+    <result column="arrgt_period" jdbcType="VARCHAR" property="arrgtPeriod" />
+    <result column="arrgt_starttime" jdbcType="TIME" property="arrgtStarttime" />
+    <result column="arrgt_endtime" jdbcType="TIME" property="arrgtEndtime" />
+    <result column="arrgt_plannum" jdbcType="INTEGER" property="arrgtPlannum" />
+    <result column="arrgt_lastnum" jdbcType="INTEGER" property="arrgtLastnum" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    arrgt_id, arrgt_doctor_id, arrgt_date, arrgt_period, arrgt_starttime, arrgt_endtime, 
+    arrgt_plannum, arrgt_lastnum
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from arrangement
+    where arrgt_id = #{arrgtId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from arrangement
+    where arrgt_id = #{arrgtId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.cjb.pojo.Arrangement">
+    insert into arrangement (arrgt_id, arrgt_doctor_id, arrgt_date, 
+      arrgt_period, arrgt_starttime, arrgt_endtime, 
+      arrgt_plannum, arrgt_lastnum)
+    values (#{arrgtId,jdbcType=INTEGER}, #{arrgtDoctorId,jdbcType=INTEGER}, #{arrgtDate,jdbcType=DATE}, 
+      #{arrgtPeriod,jdbcType=VARCHAR}, #{arrgtStarttime,jdbcType=TIME}, #{arrgtEndtime,jdbcType=TIME}, 
+      #{arrgtPlannum,jdbcType=INTEGER}, #{arrgtLastnum,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.cjb.pojo.Arrangement">
+    insert into arrangement
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="arrgtId != null">
+        arrgt_id,
+      </if>
+      <if test="arrgtDoctorId != null">
+        arrgt_doctor_id,
+      </if>
+      <if test="arrgtDate != null">
+        arrgt_date,
+      </if>
+      <if test="arrgtPeriod != null">
+        arrgt_period,
+      </if>
+      <if test="arrgtStarttime != null">
+        arrgt_starttime,
+      </if>
+      <if test="arrgtEndtime != null">
+        arrgt_endtime,
+      </if>
+      <if test="arrgtPlannum != null">
+        arrgt_plannum,
+      </if>
+      <if test="arrgtLastnum != null">
+        arrgt_lastnum,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="arrgtId != null">
+        #{arrgtId,jdbcType=INTEGER},
+      </if>
+      <if test="arrgtDoctorId != null">
+        #{arrgtDoctorId,jdbcType=INTEGER},
+      </if>
+      <if test="arrgtDate != null">
+        #{arrgtDate,jdbcType=DATE},
+      </if>
+      <if test="arrgtPeriod != null">
+        #{arrgtPeriod,jdbcType=VARCHAR},
+      </if>
+      <if test="arrgtStarttime != null">
+        #{arrgtStarttime,jdbcType=TIME},
+      </if>
+      <if test="arrgtEndtime != null">
+        #{arrgtEndtime,jdbcType=TIME},
+      </if>
+      <if test="arrgtPlannum != null">
+        #{arrgtPlannum,jdbcType=INTEGER},
+      </if>
+      <if test="arrgtLastnum != null">
+        #{arrgtLastnum,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.cjb.pojo.Arrangement">
+    update arrangement
+    <set>
+      <if test="arrgtDoctorId != null">
+        arrgt_doctor_id = #{arrgtDoctorId,jdbcType=INTEGER},
+      </if>
+      <if test="arrgtDate != null">
+        arrgt_date = #{arrgtDate,jdbcType=DATE},
+      </if>
+      <if test="arrgtPeriod != null">
+        arrgt_period = #{arrgtPeriod,jdbcType=VARCHAR},
+      </if>
+      <if test="arrgtStarttime != null">
+        arrgt_starttime = #{arrgtStarttime,jdbcType=TIME},
+      </if>
+      <if test="arrgtEndtime != null">
+        arrgt_endtime = #{arrgtEndtime,jdbcType=TIME},
+      </if>
+      <if test="arrgtPlannum != null">
+        arrgt_plannum = #{arrgtPlannum,jdbcType=INTEGER},
+      </if>
+      <if test="arrgtLastnum != null">
+        arrgt_lastnum = #{arrgtLastnum,jdbcType=INTEGER},
+      </if>
+    </set>
+    where arrgt_id = #{arrgtId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.cjb.pojo.Arrangement">
+    update arrangement
+    set arrgt_doctor_id = #{arrgtDoctorId,jdbcType=INTEGER},
+      arrgt_date = #{arrgtDate,jdbcType=DATE},
+      arrgt_period = #{arrgtPeriod,jdbcType=VARCHAR},
+      arrgt_starttime = #{arrgtStarttime,jdbcType=TIME},
+      arrgt_endtime = #{arrgtEndtime,jdbcType=TIME},
+      arrgt_plannum = #{arrgtPlannum,jdbcType=INTEGER},
+      arrgt_lastnum = #{arrgtLastnum,jdbcType=INTEGER}
+    where arrgt_id = #{arrgtId,jdbcType=INTEGER}
+  </update>
+</mapper>
